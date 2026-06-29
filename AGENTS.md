@@ -1,4 +1,4 @@
-# Agent Guidelines for hexy
+# Agent Guidelines for hexal
 
 ## Rust API Guidelines
 

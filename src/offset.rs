@@ -36,7 +36,7 @@ impl Sealed for EvenQ {}
 
 /// Conversion scheme between axial and offset coordinates.
 ///
-/// This trait is sealed; it cannot be implemented outside of `hexy`.
+/// This trait is sealed; it cannot be implemented outside of `hexal`.
 #[allow(private_bounds)]
 pub trait OffsetScheme<T: SignedInt>: Sealed + Sized {
     /// Converts an axial [`Hex`] to offset coordinates under this scheme.
@@ -55,7 +55,7 @@ pub trait OffsetScheme<T: SignedInt>: Sealed + Sized {
 /// ## Examples
 ///
 /// ```rust
-/// use hexy::{hex, OddR};
+/// use hexal::{hex, OddR};
 ///
 /// let offset = hex!(1, 2).to_offset::<OddR>();
 /// assert_eq!(offset.col, 2);
@@ -88,7 +88,7 @@ impl<T: SignedInt, S: OffsetScheme<T>> OffsetHex<T, S> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::{hex, OddR};
+    /// use hexal::{hex, OddR};
     ///
     /// let h = hex!(3, -2);
     /// assert_eq!(h.to_offset::<OddR>().to_hex(), h);

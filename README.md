@@ -1,15 +1,15 @@
-# hexy
+# hexal
 
 Axial hex coordinates for `no_std` and embedded targets.
 
-[![Crates.io](https://img.shields.io/crates/v/hexy.svg)](https://crates.io/crates/hexy)
-[![Docs](https://docs.rs/hexy/badge.svg)](https://docs.rs/hexy)
-[![CI](https://github.com/crates-lurey-io/hexy/actions/workflows/test.yml/badge.svg)](https://github.com/crates-lurey-io/hexy/actions/workflows/test.yml)
+[![Crates.io](https://img.shields.io/crates/v/hexal.svg)](https://crates.io/crates/hexal)
+[![Docs](https://docs.rs/hexal/badge.svg)](https://docs.rs/hexal)
+[![CI](https://github.com/crates-lurey-io/hexal/actions/workflows/test.yml/badge.svg)](https://github.com/crates-lurey-io/hexal/actions/workflows/test.yml)
 [![License](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg)](LICENSE-MIT)
 
 ## Overview
 
-`hexy` provides **axial hex coordinates** `(q, r)` with no runtime dependencies
+`hexal` provides **axial hex coordinates** `(q, r)` with no runtime dependencies
 and no allocator. Every operation is pure integer arithmetic; no floats, no
 lookup tables, no heap.
 
@@ -27,7 +27,7 @@ derived on demand.
 ## Quick start
 
 ```rust
-use hexy::{hex, Hex, Direction};
+use hexal::{hex, Hex, Direction};
 
 // Construct
 let a = hex!(1, -1);
@@ -60,7 +60,7 @@ For screen/storage mapping, convert via one of four standard schemes:
 | `EvenQ`  | Flat-top    | Even cols shifted up |
 
 ```rust
-use hexy::{hex, OddR};
+use hexal::{hex, OddR};
 
 let offset = hex!(1, 2).to_offset::<OddR>();
 assert_eq!(offset.col, 2);
@@ -85,7 +85,7 @@ assert_eq!(offset.to_hex(), hex!(1, 2));
 
 ## `no_std`
 
-`hexy` is unconditionally `no_std`. No `extern crate alloc` is needed; all
+`hexal` is unconditionally `no_std`. No `extern crate alloc` is needed; all
 iterators are stack-only.
 
 ## MSRV

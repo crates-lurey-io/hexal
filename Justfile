@@ -28,7 +28,7 @@ doc:
 doc-gen:
     cargo clean --doc
     cargo doc --no-deps
-    echo '<meta http-equiv="refresh" content="0;url=hexy/index.html">' > target/doc/index.html
+    echo '<meta http-equiv="refresh" content="0;url=hexal/index.html">' > target/doc/index.html
     rm target/doc/.lock
 
 # ── Test ─────────────────────────────────────────────────────────────────────

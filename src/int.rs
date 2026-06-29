@@ -1,4 +1,4 @@
-//! Signed integer bound used throughout `hexy`.
+//! Signed integer bound used throughout `hexal`.
 //!
 //! When the `ixy` feature is enabled, this re-exports [`ixy::int::SignedInt`]
 //! directly. Otherwise a minimal local definition covers `i8` through `isize`.
@@ -19,7 +19,7 @@ mod local {
 
     /// A signed integer that can be used as a hex coordinate component.
     ///
-    /// This trait is sealed; it cannot be implemented outside of `hexy`.
+    /// This trait is sealed; it cannot be implemented outside of `hexal`.
     #[allow(private_bounds)]
     pub trait SignedInt:
         Sealed

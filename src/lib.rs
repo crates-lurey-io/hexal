@@ -2,7 +2,7 @@
 //!
 //! ## Coordinate system
 //!
-//! `hexy` uses **axial coordinates** `(q, r)` as the primary representation.
+//! `hexal` uses **axial coordinates** `(q, r)` as the primary representation.
 //! Axial is the cleanest system for arithmetic: neighbors, distance, rings, and
 //! lines are all simple expressions with no lookup tables.
 //!
@@ -36,7 +36,7 @@
 //! ## Examples
 //!
 //! ```rust
-//! use hexy::{hex, Hex, Direction};
+//! use hexal::{hex, Hex, Direction};
 //!
 //! let a = hex!(1, 0);
 //! let b = hex!(0, 1);
@@ -87,7 +87,7 @@ pub type HexI8 = Hex<i8>;
 /// # Examples
 ///
 /// ```rust
-/// use hexy::{hex, Hex};
+/// use hexal::{hex, Hex};
 ///
 /// const H: Hex = hex!(3, -1);
 /// assert_eq!(H, Hex::new(3, -1));

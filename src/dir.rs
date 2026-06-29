@@ -36,7 +36,7 @@ impl Direction {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::Direction;
+    /// use hexal::Direction;
     ///
     /// assert_eq!(Direction::E.opposite(), Direction::W);
     /// assert_eq!(Direction::NE.opposite(), Direction::SW);
@@ -58,7 +58,7 @@ impl Direction {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::Direction;
+    /// use hexal::Direction;
     ///
     /// assert_eq!(Direction::E.rotate_cw(), Direction::SE);
     /// ```
@@ -79,7 +79,7 @@ impl Direction {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::Direction;
+    /// use hexal::Direction;
     ///
     /// assert_eq!(Direction::E.rotate_ccw(), Direction::NE);
     /// ```

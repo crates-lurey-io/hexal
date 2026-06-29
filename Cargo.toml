@@ -1,14 +1,14 @@
 [package]
-name = "hexy"
+name = "hexal"
 edition = "2024"
 version = "0.1.0-alpha.1"
 rust-version = "1.87"
 authors = ["Matan Lurey <matan@lurey.org>"]
 license = "MIT OR Apache-2.0"
 description = "Axial hex coordinates for no_std and embedded targets"
-repository = "https://github.com/crates-lurey-io/hexy"
-homepage = "https://github.com/crates-lurey-io/hexy"
-documentation = "https://docs.rs/hexy"
+repository = "https://github.com/crates-lurey-io/hexal"
+homepage = "https://github.com/crates-lurey-io/hexal"
+documentation = "https://docs.rs/hexal"
 keywords = ["hex", "hexagonal", "grid", "gamedev", "no-std"]
 categories = ["game-development", "mathematics", "no-std"]
 

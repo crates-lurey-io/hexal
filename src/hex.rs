@@ -25,7 +25,7 @@ use crate::{Direction, HexLine, HexRange, HexRing, int::SignedInt, offset::Offse
 /// ## Examples
 ///
 /// ```rust
-/// use hexy::{hex, Hex};
+/// use hexal::{hex, Hex};
 ///
 /// let h = hex!(2, -1);
 /// assert_eq!(h.q, 2);
@@ -106,7 +106,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::hex;
+    /// use hexal::hex;
     ///
     /// assert_eq!(hex!(1, 2).s(), -3);
     /// ```
@@ -120,7 +120,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::{hex, Direction};
+    /// use hexal::{hex, Direction};
     ///
     /// assert_eq!(hex!(1, 0).neighbor(Direction::W), hex!(0, 0));
     /// ```
@@ -134,7 +134,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::{hex, Direction};
+    /// use hexal::{hex, Direction};
     ///
     /// let neighbors = hex!(0, 0).neighbors();
     /// assert_eq!(neighbors[Direction::E as usize], hex!(1, 0));
@@ -152,7 +152,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::hex;
+    /// use hexal::hex;
     ///
     /// assert_eq!(hex!(0, 0).distance(hex!(3, -1)), 3);
     /// assert_eq!(hex!(-2, 3).distance(hex!(1, -1)), 4);
@@ -176,7 +176,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::hex;
+    /// use hexal::hex;
     ///
     /// assert_eq!(hex!(2, -1).length(), 2);
     /// ```
@@ -193,7 +193,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::Hex;
+    /// use hexal::Hex;
     ///
     /// assert_eq!(Hex::ORIGIN.ring(0).count(), 1);
     /// assert_eq!(Hex::ORIGIN.ring(1).count(), 6);
@@ -211,7 +211,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::Hex;
+    /// use hexal::Hex;
     ///
     /// assert_eq!(Hex::ORIGIN.range(0).count(), 1);
     /// assert_eq!(Hex::ORIGIN.range(1).count(), 7);
@@ -230,7 +230,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::hex;
+    /// use hexal::hex;
     ///
     /// let line: Vec<_> = hex!(0, 0).line_to(hex!(2, 0)).collect();
     /// assert_eq!(line.len(), 3);
@@ -247,7 +247,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::{hex, OddR};
+    /// use hexal::{hex, OddR};
     ///
     /// let offset = hex!(1, 2).to_offset::<OddR>();
     /// assert_eq!(offset.col, 2);
@@ -263,7 +263,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::hex;
+    /// use hexal::hex;
     ///
     /// assert_eq!(hex!(1, 0).rotate_cw(), hex!(0, 1));
     /// ```
@@ -280,7 +280,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::hex;
+    /// use hexal::hex;
     ///
     /// // E counterclockwise is NE
     /// assert_eq!(hex!(1, 0).rotate_ccw(), hex!(1, -1));
@@ -300,7 +300,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::hex;
+    /// use hexal::hex;
     ///
     /// assert_eq!(hex!(1, 2).reflect_q().reflect_q(), hex!(1, 2));
     /// ```
@@ -317,7 +317,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::hex;
+    /// use hexal::hex;
     ///
     /// assert_eq!(hex!(1, 2).reflect_r().reflect_r(), hex!(1, 2));
     /// ```
@@ -334,7 +334,7 @@ impl<T: SignedInt> Hex<T> {
     /// # Examples
     ///
     /// ```rust
-    /// use hexy::hex;
+    /// use hexal::hex;
     ///
     /// assert_eq!(hex!(1, 2).reflect_s().reflect_s(), hex!(1, 2));
     /// ```

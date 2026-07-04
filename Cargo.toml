@@ -1,7 +1,7 @@
 [package]
 name = "hexal"
 edition = "2024"
-version = "0.1.0"
+version = "0.1.1"
 rust-version = "1.87"
 authors = ["Matan Lurey <matan@lurey.org>"]
 license = "MIT OR Apache-2.0"
@@ -34,7 +34,7 @@ ixy = ["dep:ixy"]
 
 [dependencies]
 serde = { version = "1.0", optional = true, default-features = false, features = ["derive"] }
-ixy = { version = "=0.6.1", optional = true }
+ixy = { version = "0.6.1", optional = true }
 
 [dev-dependencies]
 proptest = "1"

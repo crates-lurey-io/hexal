@@ -44,6 +44,7 @@
 //! assert_eq!(a.neighbor(Direction::W), hex!(0, 0));
 //! ```
 
+#![cfg_attr(docsrs, feature(doc_cfg))]
 #![no_std]
 #![forbid(unsafe_code)]
 

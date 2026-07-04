@@ -7,6 +7,33 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-07-04
+
+Pre-1.0 stable release. No API breaking changes beyond the bug fix below (the fix changes
+output for negative offset coordinates, which were wrong before).
+
+### Fixed
+
+- **`OffsetHex` conversions were wrong for negative rows/columns.** The internal `parity()`
+  helper computed `v - (v / two) * two` to get `v`'s low bit, but Rust's `/` truncates toward
+  zero, so for negative odd `v` (e.g. `-1`) this returned `-1` instead of the canonical `1`,
+  silently flipping the shift direction for `OddR`/`EvenR`/`OddQ`/`EvenQ` offset coordinates with
+  negative axial input. Existing tests only round-tripped through the same buggy `parity()` in
+  both directions, so they passed despite the bug; added a regression test that checks against
+  the canonical Red Blob Games formula independently (via `rem_euclid`) for negative rows. Fixed
+  by computing `(v % two).abs()` instead, which is correct for any sign.
+
+### Changed
+
+- `ixy` dependency requirement tightened from a loose `"0.6.0-alpha.7"` (caret) to an exact
+  `"=0.6.1"` pin. Because both crates live on pre-1.0 version tracks, the loose requirement had
+  already silently resolved upward to `0.6.0-alpha.8` in this crate's own `Cargo.lock` - the same
+  drift hazard `grixy` hit and fixed with exact-pinning in its own alpha.8 release.
+- `missing_docs`/`unreachable_pub`/`unused_qualifications` lints promoted from `warn` to `deny`,
+  matching the rest of the ecosystem (ixy/gem/grixy/framepace).
+- Added `#![cfg_attr(docsrs, feature(doc_cfg))]` for consistency with sibling crates' docs.rs
+  configuration.
+
 ## [0.1.0-alpha.2] - 2026-06-28
 
 ### Fixed

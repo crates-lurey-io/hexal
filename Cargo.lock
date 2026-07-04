@@ -81,8 +81,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "hexy"
-version = "0.1.0-alpha.1"
+name = "hexal"
+version = "0.1.0"
 dependencies = [
  "ixy",
  "proptest",
@@ -98,9 +98,9 @@ checksum = "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682"
 
 [[package]]
 name = "ixy"
-version = "0.6.0-alpha.8"
+version = "0.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d761157d656e640784376519ccdf61703f99defd4a1a25e9cb833e43dbe83c74"
+checksum = "947712713bffab262e4ef564ace3eadecc59d041244c566bcc2e7d1d43dff5cf"
 
 [[package]]
 name = "libc"

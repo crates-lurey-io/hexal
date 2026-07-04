@@ -111,10 +111,16 @@ impl<T: SignedInt, S: OffsetScheme<T>> OffsetHex<T, S> {
 //   r = row
 
 fn parity<T: SignedInt>(v: T) -> T {
-    // Returns 0 for even, 1 for odd (positive), as T.
-    // We compute v & 1 via: v - (v / TWO) * TWO
+    // Returns 0 for even, 1 for odd, as T, regardless of the sign of `v`.
+    //
+    // This must match the bitwise `v & 1` used by the canonical (Red Blob Games) offset-coordinate
+    // formulas, which is always 0 or 1 for any two's-complement `v`. `v - (v / two) * two` is
+    // *not* equivalent: Rust's `/` truncates toward zero, so for negative odd `v` (e.g. `v = -1`)
+    // it produces `-1` instead of `1`, silently flipping the shift direction for negative
+    // rows/columns. `v % two` has the same truncating-division sign behavior as `/`, but taking
+    // its absolute value corrects it back to the canonical 0/1 result for every sign.
     let two = T::ONE + T::ONE;
-    v - (v / two) * two
+    (v % two).abs()
 }
 
 fn r_offset_to_axial<T: SignedInt>(col: T, row: T, shift: T) -> Hex<T> {
@@ -267,5 +273,29 @@ mod tests {
         roundtrip::<EvenQ>(0, 0);
         roundtrip::<OddR>(3, 0);
         roundtrip::<OddR>(0, 3);
+    }
+
+    /// Regression test for a sign bug in `parity()`: `v - (v / two) * two` used truncating
+    /// division, which returns `-1` (not `1`) for negative odd `v`, silently flipping the shift
+    /// direction for negative rows/columns. Since the same buggy `parity()` was used for both
+    /// `from_axial` and `to_axial`, round-trip tests alone couldn't catch it (`roundtrip` above
+    /// passes even with the bug). This asserts against the canonical Red Blob Games formula
+    /// (`col = q + (r - (r & 1)) / 2` for `OddR`) computed independently via `rem_euclid`, which
+    /// is correct for any sign.
+    #[test]
+    fn odd_r_matches_canonical_formula_for_negative_rows() {
+        for q in -5..=5i32 {
+            for r in -5..=5i32 {
+                let bit = r.rem_euclid(2);
+                let expected_col = q + (r - bit) / 2;
+                let actual = hex!(q, r).to_offset::<OddR>();
+                assert_eq!(
+                    actual.col, expected_col,
+                    "OddR col mismatch for hex!({q}, {r}): got {}, expected {expected_col}",
+                    actual.col
+                );
+                assert_eq!(actual.row, r);
+            }
+        }
     }
 }

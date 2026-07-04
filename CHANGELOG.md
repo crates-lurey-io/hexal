@@ -7,6 +7,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-07-04
+
+### Changed
+
+- Relaxed `ixy` from an exact `=0.6.1` pin to a normal caret requirement (`"0.6.1"`). The exact
+  pin was a necessary workaround while `ixy` was still on its `0.6.0-alpha.N` prerelease track,
+  where Cargo's caret matching against prereleases is unsafe. Now that `ixy` has a real stable
+  release, normal Cargo `0.y.z` caret semantics already prevent the same hazard (caret only floats
+  the patch component, never `y`), so keeping the exact pin only costs a forced republish on every
+  future `ixy` patch and version-unification risk for consumers depending on both crates directly.
+
 ## [0.1.0] - 2026-07-04
 
 Pre-1.0 stable release. No API breaking changes beyond the bug fix below (the fix changes
